@@ -1,29 +1,32 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
-	import { formatNumber } from '$lib/utils';
+	import { formatCurrency, formatNumber } from '$lib/utils';
 
 	type DashboardCardProps = {
 		title: string;
 		subtitle: string;
 		body: string;
 	};
+
+	let { data } = $props();
+	let { productData, salesData, userData } = $derived(data);
 </script>
 
 <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 	{@render dashboardCard({
 		title: 'Sales',
-		subtitle: `${formatNumber(2000)} orders`,
-		body: '$1,000.00'
+		subtitle: `${formatNumber(salesData.numberOfSales)} orders`,
+		body: formatCurrency(salesData.amount)
 	})}
 	{@render dashboardCard({
-		title: 'Total Sales',
-		subtitle: '',
-		body: '$1,000.00'
+		title: 'Customers',
+		subtitle: `${formatCurrency(userData.averageValuePerUser)} Average Value`,
+		body: formatNumber(userData.userCount)
 	})}
 	{@render dashboardCard({
-		title: 'Total Sales',
-		subtitle: 'This month',
-		body: '$1,000.00'
+		title: 'Sales',
+		subtitle: `${formatNumber(productData.inactiveCount)} Inactive`,
+		body: `${formatNumber(productData.active)} Active`
 	})}
 </div>
 
