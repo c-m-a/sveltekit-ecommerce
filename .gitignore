@@ -19,3 +19,12 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Prisma environment-specific databases
+/prisma/dev.db
+/prisma/dev.db-journal
+/prisma/test.db
+/prisma/test.db-journal
+
+# Prisma Studio
+/prisma/.studio
