@@ -1,4 +1,4 @@
-import { db } from '../../hooks.server';
+import { db } from '@/hooks.server';
 import type { PageServerLoad } from './$types';
 
 async function getSalesData() {
