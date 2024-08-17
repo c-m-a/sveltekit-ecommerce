@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/card';
-	import { formatCurrency, formatNumber } from '$lib/utils';
+	import * as Card from '@/lib/components/ui/card';
+	import { formatCurrency, formatNumber } from '@/lib/utils';
 
 	type DashboardCardProps = {
 		title: string;
