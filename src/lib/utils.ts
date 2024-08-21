@@ -55,6 +55,22 @@ export const flyAndScale = (
 	};
 };
 
+export function getCurrentDateTime() {
+	const now = new Date();
+
+	// Extract components
+	const year = now.getFullYear();
+	// Months are 0-based
+	const month = String(now.getMonth() + 1).padStart(2, '0');
+	const day = String(now.getDate()).padStart(2, '0');
+	const hour = String(now.getHours()).padStart(2, '0');
+	const minute = String(now.getMinutes()).padStart(2, '0');
+	const second = String(now.getSeconds()).padStart(2, '0');
+
+	// Format as YYYYMMDDHHMMSS
+	return `${year}${month}${day}${hour}${minute}${second}`;
+}
+
 export function formatCurrency(value: number): string {
 	return new Intl.NumberFormat('en-US', {
 		style: 'currency',
@@ -67,3 +83,13 @@ export function formatNumber(value: number): string {
 	return new Intl.NumberFormat('en-US').format(value);
 }
 
+export function generateRandNumber() {
+	return ((Math.random() * 1000000) | 1).toString().padEnd(7, '0');
+}
+
+export function getFileExtension(file: { name: string }): string | undefined {
+	const fileName = file.name;
+	// Get the part after the last dot
+	const extension = fileName.split('.').pop();
+	return extension;
+}
