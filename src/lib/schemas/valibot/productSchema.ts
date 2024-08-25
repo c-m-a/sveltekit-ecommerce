@@ -9,8 +9,7 @@ import {
 	maxSize,
 	mimeType
 } from 'valibot';
-
-const FILE_MAX_SIZE = 1024 * 1024 * 10; // 10MB
+import { FILE_MAX_SIZE } from '../../../config/constants';
 
 export const addProductSchema = object({
 	name: pipe(string(), minLength(3, 'message')),
