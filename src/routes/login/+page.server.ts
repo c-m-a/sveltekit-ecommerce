@@ -17,6 +17,7 @@ export const load = async () => {
 
 export const actions = {
 	default: async (e) => {
+		const redirectTo = e.url.searchParams.get('redirectTo');
 		const form = await superValidate(e, valibot(loginSchema));
 
 		if (!form.valid) return fail(400, { form });
@@ -53,7 +54,10 @@ export const actions = {
 				...sessionCookie.attributes
 			});
 
-			redirect(302, '/admin');
+			if (redirectTo) {
+				throw redirect(302, `/${redirectTo.slice(1)}`);
+			}
+			throw redirect(302, '/admin');
 		}
 
 		const existingUser = await db.user.findUnique({
@@ -76,6 +80,9 @@ export const actions = {
 			...sessionCookie.attributes
 		});
 
-		redirect(302, '/admin');
+		if (redirectTo) {
+			throw redirect(302, `/${redirectTo.slice(1)}`);
+		}
+		throw redirect(302, '/admin');
 	}
 };
