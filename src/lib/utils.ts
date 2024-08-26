@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { cubicOut } from 'svelte/easing';
 import type { TransitionConfig } from 'svelte/transition';
+import type { RequestEvent } from '@sveltejs/kit';
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -92,4 +93,12 @@ export function getFileExtension(file: { name: string }): string | undefined {
 	// Get the part after the last dot
 	const extension = fileName.split('.').pop();
 	return extension;
+}
+
+export function handleLoginRedirect(
+	event: RequestEvent,
+	msg: string = 'Please Log In to Continue'
+) {
+	const redirectTo = event.url.pathname + event.url.search;
+	return `/login?redirectTo=${redirectTo}&msg=${msg}`;
 }
