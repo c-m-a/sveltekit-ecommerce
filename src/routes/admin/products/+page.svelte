@@ -4,7 +4,7 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 
 	import { CheckCircle, MoreVertical, XCircle } from 'lucide-svelte';
-	import PageHeader from '@/lib/components/ui/PageHeader.svelte';
+	import PageHeader from '@/lib/components/PageHeader.svelte';
 	import { formatCurrency, formatNumber } from '@/lib/utils';
 
 	let { data } = $props();

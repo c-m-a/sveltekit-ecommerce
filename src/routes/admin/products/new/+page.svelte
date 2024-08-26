@@ -6,7 +6,7 @@
 	import { fileProxy, superForm } from 'sveltekit-superforms';
 	import { valibotClient } from 'sveltekit-superforms/adapters';
 
-	import PageHeader from '@/lib/components/ui/PageHeader.svelte';
+	import PageHeader from '@/lib/components/PageHeader.svelte';
 
 	import { addProductSchema } from '@/lib/schemas/valibot/productSchema.js';
 	import { Loader } from 'lucide-svelte';

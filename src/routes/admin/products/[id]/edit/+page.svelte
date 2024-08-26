@@ -7,7 +7,7 @@
 	import { valibotClient } from 'sveltekit-superforms/adapters';
 	import { partial } from 'valibot';
 
-	import PageHeader from '@/lib/components/ui/PageHeader.svelte';
+	import PageHeader from '@/lib/components/PageHeader.svelte';
 
 	import { addProductSchema } from '@/lib/schemas/valibot/productSchema.js';
 	import { page } from '$app/stores';
